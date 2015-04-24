@@ -22,17 +22,20 @@ public class MainActivity extends ActionBarActivity implements android.support.v
         bar.setNavigationMode(android.support.v7.app.ActionBar.NAVIGATION_MODE_TABS);
         android.support.v7.app.ActionBar.Tab tab = bar.newTab();
     // add tabs
-        tab.setText("Tab 1");
+        tab.setText("List");
+        tab.setIcon(R.drawable.list2);
         tab.setTabListener(this);
         bar.addTab(tab);
 
         tab = bar.newTab();
-        tab.setText("Tab 2 ");
+        tab.setText("Gallery");
+        tab.setIcon(R.drawable.gallary);
         tab.setTabListener(this);
         bar.addTab(tab);
 
         tab = bar.newTab();
-        tab.setText("Tab 3 ");
+        tab.setText("Service");
+        tab.setIcon(R.drawable.service);
         tab.setTabListener(this);
         bar.addTab(tab);
     }
