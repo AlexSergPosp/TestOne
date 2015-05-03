@@ -1,8 +1,6 @@
 package com.example.alex.test;
 
-
-
-
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;  // по какой то причине подключаем эту библтотеку
 import android.view.Menu;
@@ -22,22 +20,25 @@ public class MainActivity extends ActionBarActivity implements android.support.v
         bar.setNavigationMode(android.support.v7.app.ActionBar.NAVIGATION_MODE_TABS);
         android.support.v7.app.ActionBar.Tab tab = bar.newTab();
     // add tabs
-        tab.setText("List");
-        tab.setIcon(R.drawable.list2);
-        tab.setTabListener(this);
+        tab.setText("List")
+            .setIcon(R.drawable.list2)
+            .setTabListener(this);
         bar.addTab(tab);
 
-        tab = bar.newTab();
-        tab.setText("Gallery");
-        tab.setIcon(R.drawable.gallary);
-        tab.setTabListener(this);
+        tab = bar.newTab()
+            .setText("Gallery")
+            .setIcon(R.drawable.gallary)
+            .setTabListener(this);
         bar.addTab(tab);
 
-        tab = bar.newTab();
-        tab.setText("Service");
-        tab.setIcon(R.drawable.service);
-        tab.setTabListener(this);
+        tab = bar.newTab()
+            .setText("Service")
+            .setIcon(R.drawable.service)
+            .setTabListener(this);
         bar.addTab(tab);
+
+        Intent intent = new Intent(this,Gallery.class);
+        startActivity(intent);
     }
 
 
@@ -46,7 +47,6 @@ public class MainActivity extends ActionBarActivity implements android.support.v
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
-
     }
 
     @Override
