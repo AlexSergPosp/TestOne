@@ -2,7 +2,10 @@ package com.example.alex.test;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.media.Image;
 import android.os.AsyncTask;
+import android.view.View;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
@@ -25,7 +28,10 @@ class GetXMLTask extends AsyncTask<String, Void, Bitmap> {
     // Sets the Bitmap returned by doInBackground
     @Override
     protected void onPostExecute(Bitmap result) {
-        FragmentPagerAdapterGallary.image.setImageBitmap(result);
+        if (result!=null) {
+            FragmentPagerAdapterGallary.image.setImageBitmap(result);
+            FragmentPagerAdapterGallary.progressBar.setVisibility(View.INVISIBLE);
+        }
     }
 
     // Creates Bitmap from InputStream and returns it
@@ -36,10 +42,11 @@ class GetXMLTask extends AsyncTask<String, Void, Bitmap> {
         bmOptions.inSampleSize = 1;
 
         try {
+            while (bitmap==null){
             stream = getHttpConnection(url);
             bitmap = BitmapFactory.
                     decodeStream(stream, null, bmOptions);
-            stream.close();
+            stream.close();}
         } catch (IOException e1) {
             e1.printStackTrace();
         }
